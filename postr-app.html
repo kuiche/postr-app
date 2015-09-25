@@ -1,0 +1,38 @@
+<head>
+  <title>postr-app</title>
+</head>
+
+<body>
+  {{> login}}
+  {{#if currentUser}}
+    {{> logout}}
+  {{/if}}
+  <h1>Welcome to Meteor!</h1>
+
+  {{> post}}
+</body>
+
+<template name="post">
+  <form action="#">
+    <input type="text" name="message" id="message">
+    <button>Post</button>
+  </form>
+</template>
+
+<template name="login">
+  <ul>
+    {{#unless currentUser.services.facebook}}
+      <li><a id="login-fb">Login with Facebook</a></li>
+    {{/unless}}
+    {{#unless currentUser.services.twitter}}
+      <li><a id="login-tw">Login with Twitter</a></li>
+    {{/unless}}
+    <!-- {{#unless currentUser.services.google}}
+      <li><a id="login-goog">Login with Google</a></li>
+    {{/unless}} -->
+  </ul>
+</template>
+
+<template name="logout">
+  <a id="logout">Logout</a>
+</template>
