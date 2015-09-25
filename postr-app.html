@@ -3,36 +3,66 @@
 </head>
 
 <body>
-  {{> login}}
-  {{#if currentUser}}
-    {{> logout}}
-  {{/if}}
-  <h1>Welcome to Meteor!</h1>
+  {{> nav}}
 
-  {{> post}}
+  <main>
+    <div class="panel">
+      {{> post}}
+    </div>
+
+  </main>
 </body>
 
 <template name="post">
-  <form action="#">
-    <input type="text" name="message" id="message">
-    <button>Post</button>
-  </form>
+  {{#if currentUser}}
+    <form class="login pure-form pure-form-stacked" action="#">
+      <input type="text" class="pure-input-1" name="message" id="message">
+      <button class="pure-button button-success pure-input-1">Post</button>
+    </form>
+  {{else}}
+    <span class="header">Wecome to Postr!</span>
+  {{/if}}
+</template>
+
+<template name="recentPosts">
+  
 </template>
 
 <template name="login">
-  <ul>
-    {{#unless currentUser.services.facebook}}
-      <li><a id="login-fb">Login with Facebook</a></li>
-    {{/unless}}
-    {{#unless currentUser.services.twitter}}
-      <li><a id="login-tw">Login with Twitter</a></li>
-    {{/unless}}
-    <!-- {{#unless currentUser.services.google}}
-      <li><a id="login-goog">Login with Google</a></li>
-    {{/unless}} -->
-  </ul>
+  {{#unless currentUser.services.facebook}}
+    <li class="pure-menu-item">
+      <a href="#" class="pure-menu-link" id="login-fb">Login with Facebook</a>
+    </li>
+  {{/unless}}
+  {{#unless currentUser.services.twitter}}
+    <li class="pure-menu-item">
+      <a href="#" class="pure-menu-link" id="login-tw">Login with Twitter</a>
+    </li>
+  {{/unless}}
+  <!-- {{#unless currentUser.services.google}}
+    <span id="login-goog">Login with Google</span>
+  {{/unless}} -->
 </template>
 
 <template name="logout">
-  <a id="logout">Logout</a>
+  <li class="pure-menu-item">
+    <a href="#" class="pure-menu-link" id="logout">Logout</a>
+  </li>
+</template>
+
+<template name="nav">
+    <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
+      <span class="pure-menu-heading">Postr</span>
+
+      <ul class="pure-menu-list">
+        <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" id="login-links" class="pure-menu-link">
+              {{#unless currentUser}} Login {{else}} Accounts {{/unless}}
+            </a>
+            <ul class="pure-menu-children">
+              {{> login}} {{#if currentUser}}{{> logout}}{{/if}}
+            </ul>
+        </li>
+      </ul>
+    </div>
 </template>

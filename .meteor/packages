@@ -31,3 +31,5 @@ check # required for merge
 meteorhacks:npm
 
 npm-container
+fourseven:scss
+agustino:purecss

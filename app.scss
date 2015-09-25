@@ -1,0 +1,88 @@
+@import "client/stylesheets/colours.scss";
+
+main {
+  color: $light-grey;
+  margin-top: 80px;
+}
+
+.panel {
+  padding: 20px 20px 20px 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  max-width: 500px;
+  background-color: $color-secondary-2-2;  
+}
+
+input,
+textarea {
+  color: $dark-grey;
+}
+
+body {
+  background-color: $color-secondary-2-3;
+}
+
+.home-menu {
+  padding: 10px;
+  background-color: $color-primary-0;
+  color: $light-grey;
+}
+
+.home-menu ul {
+  float: left;
+}
+
+.home-menu .pure-menu-heading{
+  float: right;
+}
+.pure-menu-heading,
+.pure-menu-link
+{
+  color: $light-grey;
+}
+
+.pure-menu-link {
+  background-color: $color-primary-2;
+}
+
+.pure-menu-active>.pure-menu-link,
+.pure-menu-link:hover,
+.pure-menu-link:focus {
+  background-color: $color-primary-1;
+}
+
+.pure-menu-link:focus + ul,
+.pure-menu-children:hover {
+  display: block;
+}
+
+/* Buttons */
+// remove pure stuff
+.pure-button-hover,
+.pure-button:hover,
+.pure-button:focus {
+    filter: none;
+    background-image: none;
+    background-image: none;
+    background-image: none;
+    background-image: none;
+    background-image: none;
+}
+
+.button-go,
+.button-success {
+  color: $light-grey;
+  background-color: $color-complement-0;
+}
+.button-go:hover,
+.button-success:hover {
+  background-color: $color-complement-1;
+}
+
+// noAuth
+.header {
+  font-size: 2em;
+  width: 100%;
+  text-align: center;
+}
