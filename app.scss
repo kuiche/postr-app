@@ -5,13 +5,26 @@ main {
   margin-top: 80px;
 }
 
+.post.panel {
+  background-color: $color-secondary-2-2;
+  
+}
+
 .panel {
-  padding: 20px 20px 20px 20px;
+  padding: 20px;
+  width: calc(80% - 40px);
+  max-width: 500px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 20px;
-  max-width: 500px;
-  background-color: $color-secondary-2-2;  
+  background-color: $color-secondary-2-2;
+}
+
+.panel.welcome {
+  padding: 50px;
+  width: calc(80% - 100px);
+  max-width: 700px;
+  text-align: center;
 }
 
 input,

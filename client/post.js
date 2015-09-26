@@ -3,13 +3,17 @@ Template.post.events({
     e.preventDefault();
 
     var value = e.target.message.value;
+
+    e.target.message.value = "";
+
+    Meteor.call("saveLocalPost", value, function(err,result) {
+        if(err) console.log(err);
+    });
     Meteor.call("postToFacebook", value, function(err,result) {
-        if(!err) alert("Posted to facebook");
-        else console.log(err);
+        if(err) console.log(err);
     });
     Meteor.call("postToTwitter", value, function(err,result) {
-        if(!err) alert("Posted to twitter");
-        else console.log(err);
+        if(err) console.log(err);
     });
   }
 });

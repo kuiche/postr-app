@@ -6,26 +6,32 @@
   {{> nav}}
 
   <main>
-    <div class="panel">
+    
       {{> post}}
-    </div>
-
+    
+    {{#if currentUser}}{{> recentPosts}}{{/if}}
   </main>
 </body>
 
 <template name="post">
   {{#if currentUser}}
-    <form class="login pure-form pure-form-stacked" action="#">
-      <input type="text" class="pure-input-1" name="message" id="message">
-      <button class="pure-button button-success pure-input-1">Post</button>
-    </form>
+    <div class="panel post">
+      <form class="login pure-form pure-form-stacked" action="#">
+        <input class="pure-input-1" name="message" id="message">
+        <button class="pure-button button-success pure-input-1">Post</button>
+      </form>
+    </div>
   {{else}}
-    <span class="header">Wecome to Postr!</span>
+    <div class="panel welcome">
+      <span class="header">Wecome to Postr!</span>
+    </div>
   {{/if}}
 </template>
 
 <template name="recentPosts">
-  
+  {{#each posts}}
+    <section class="panel">{{this.content}}</section>
+  {{/each}}
 </template>
 
 <template name="login">
