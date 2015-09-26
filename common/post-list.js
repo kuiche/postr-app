@@ -8,6 +8,7 @@ if (Meteor.isClient) {
     },
     postHas: function (type) {
       if (!this.services) return false;
+
       return this.services.indexOf(type) > -1;
     }
   });

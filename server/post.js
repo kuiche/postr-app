@@ -36,7 +36,7 @@ var services = {
     var text = validateMessage(post);
     var retries = retries || 0;
 
-    if(Meteor.user().services.twitter.accessToken) {
+    if(Meteor.user().services.twitter && Meteor.user().services.twitter.accessToken) {
       T = new twit({
         consumer_key: Meteor.settings.twitter.consumerKey,
         consumer_secret: Meteor.settings.twitter.secret,
@@ -61,7 +61,7 @@ var services = {
     var graph = Meteor.npmRequire('fbgraph');
     var text = validateMessage(post);
 
-    if(Meteor.user().services.facebook.accessToken) {
+    if(Meteor.user().services.facebook && Meteor.user().services.facebook.accessToken) {
       graph.setAccessToken(Meteor.user().services.facebook.accessToken);
       //Async Meteor (help from : https://gist.github.com/possibilities/3443021
       graph.post('/me/feed',{message:text}, Meteor.bindEnvironment(function(err,result) {
@@ -84,7 +84,7 @@ Meteor.startup(function () {
   Meteor.methods({
     'postToAll' : function(message) {
       var text = validateMessage(message);
-      var post = services.local(message);
+      var post = services.local(text);
 
       services.twitter(post);
       services.facebook(post);
@@ -93,9 +93,17 @@ Meteor.startup(function () {
       return services.local(post);
     },
     'postToFacebook': function(post) {
+      if (typeof post !== "object") {
+        post = services.local(post);
+      }
+
       return services.facebook(post);
     },
     'postToTwitter': function(post) {
+      if (typeof post !== "object") {
+        post = services.local(post);
+      }
+
       return services.twitter(post);
     }
   });
