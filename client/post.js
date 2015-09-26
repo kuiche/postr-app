@@ -4,16 +4,23 @@ Template.post.events({
 
     var value = e.target.message.value;
 
+    if (value == "") {
+      throw new Error("Value cannot be empty");
+    }
+
     e.target.message.value = "";
 
-    Meteor.call("saveLocalPost", value, function(err,result) {
-        if(err) console.log(err);
-    });
-    Meteor.call("postToFacebook", value, function(err,result) {
-        if(err) console.log(err);
-    });
-    Meteor.call("postToTwitter", value, function(err,result) {
-        if(err) console.log(err);
+    Meteor.call("postToAll", value, function(err,result) {
+      // if(err) console.log(err);
+      // else {
+      //   console.log(result);
+        // Meteor.call("postToFacebook", result, function(err,result) {
+        //     if(err) console.log(err);
+        // });
+        // Meteor.call("postToTwitter", result, function(err,result) {
+        //     if(err) console.log(err);
+        // });
+      // }
     });
   }
 });

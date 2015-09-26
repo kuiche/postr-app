@@ -4,11 +4,8 @@
 
 <body>
   {{> nav}}
-
   <main>
-    
-      {{> post}}
-    
+    {{> post}}
     {{#if currentUser}}{{> recentPosts}}{{/if}}
   </main>
 </body>
@@ -17,7 +14,7 @@
   {{#if currentUser}}
     <div class="panel post">
       <form class="login pure-form pure-form-stacked" action="#">
-        <input class="pure-input-1" name="message" id="message">
+        <input class="pure-input-1" name="message" id="message" required="required">
         <button class="pure-button button-success pure-input-1">Post</button>
       </form>
     </div>
@@ -30,7 +27,22 @@
 
 <template name="recentPosts">
   {{#each posts}}
-    <section class="panel">{{this.content}}</section>
+    <section class="panel post">
+      {{this.content}}
+      
+      <span class="icons">
+        {{#if postHas "facebook"}}
+          <i class="fa fa-facebook complete"></i>
+        {{else}}
+          <a href="#" class="post-facebook send"><i class="fa fa-facebook"></i></a>
+        {{/if}}
+        {{#if postHas "twitter"}}
+          <i class="fa fa-twitter complete"></i>
+        {{ else }}
+          <a href="#" class="post-twitter send"><i class="fa fa-twitter"></i></a>
+        {{/if}}
+      </span>
+    </section>
   {{/each}}
 </template>
 

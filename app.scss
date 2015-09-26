@@ -18,6 +18,7 @@ main {
   margin-right: auto;
   margin-bottom: 20px;
   background-color: $color-secondary-2-2;
+  position: relative;
 }
 
 .panel.welcome {
@@ -25,6 +26,20 @@ main {
   width: calc(80% - 100px);
   max-width: 700px;
   text-align: center;
+}
+
+.panel .icons {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+}
+
+i.complete {
+  color: $color-success;
+}
+
+.send i {
+  color: $color-danger;
 }
 
 input,
@@ -86,11 +101,11 @@ body {
 .button-go,
 .button-success {
   color: $light-grey;
-  background-color: $color-complement-0;
+  background-color: $color-success;
 }
 .button-go:hover,
 .button-success:hover {
-  background-color: $color-complement-1;
+  background-color: $color-success-alt;
 }
 
 // noAuth
